@@ -39,42 +39,26 @@ if __name__ == '__main__':
     with open(archivo, 'r') as f:
         datos = json.loads(f.read())
         
-    for key in datos:
-        print(key)
-    
-    print('\n Los usuarios similares ♥ ♥ ♥ ' + usuario + ' son: \n')
+    print('â€¢ '*27)
+    print('Hola ' + usuario + ' te recomendamos las siguientes pelÃ­culas:')
     
     usuarios = usuarios_similares(datos, usuario, 3)
-    
-    print(usuarios)
-    
-    print('♦'*70)
-    print('el score de similitud del usuario: ')
-    print('♦'*70)
     
     all_movies = list()
     for item in usuarios: 
         if round(float(item[1]),2) > 0.0:
-             print(item[0], round(float(item[1]),2))
-             print(datos[item[0]])
-             print(usuario)
-             print(datos[usuario])
-                
-             value = { k : datos[item[0]][k] for k in set(datos[item[0]]) - set(datos[usuario]) }
-             movies = list(value.keys())
-             all_movies.append(movies)
-                
-             print('\n')
+             values = { k : datos[item[0]][k] for k in set(datos[item[0]]) - set(datos[usuario]) }
+             all_movies.append(values.keys())
+
             
     flat_list = list()         
     for sublist in all_movies:
         for item in sublist:
-            flat_list.append(item)
-            
-    newlist = list()
-    for i in flat_list:
-        if i not in newlist:
-            newlist.append(i)
-        
-    print(newlist)             
+            if item not in flat_list:
+                flat_list.append(item)
+                
+    for movie in flat_list:
+        print(' â™¥ ' + movie) 
+
+    print('â€¢ '*26)
              

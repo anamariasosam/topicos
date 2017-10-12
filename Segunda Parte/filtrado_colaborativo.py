@@ -39,7 +39,7 @@ if __name__ == '__main__':
     with open(archivo, 'r') as f:
         datos = json.loads(f.read())
         
-    print('â€¢ '*27)
+    print('◘ '*27)
     print('Hola ' + usuario + ' te recomendamos las siguientes pelÃ­culas:')
     
     usuarios = usuarios_similares(datos, usuario, 3)
@@ -58,7 +58,7 @@ if __name__ == '__main__':
                 flat_list.append(item)
                 
     for movie in flat_list:
-        print(' â™¥ ' + movie) 
+        print(' ◘ ' + movie) 
 
-    print('â€¢ '*26)
+    print('♥ '*26)
              
